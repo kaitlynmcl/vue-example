@@ -2,7 +2,12 @@
   <div class="employee">
     <div class="employee__select">
       <h1 class="employee__name">Select your employee:</h1>
-      <select v-model="selectedOption" @change="fetchUsers" class="employee__pink-theme">   <!-- prepopulates dropdown with v-model & @change event -->
+      <select
+        v-model="selectedOption"
+        @change="fetchUsers"
+        class="employee__pink-theme"
+      >
+        <!-- prepopulates dropdown with v-model & @change event -->
         <option :value="null" disabled>Select Employee:</option>
         <option
           v-for="(item, index) in options"
@@ -14,7 +19,8 @@
       </select>
     </div>
 
-    <div class="employee__info" v-for="match in matches" v-bind:key="match.id">    <!-- populates ui with content fetched from api based on the name that matches -->
+    <div class="employee__info" v-for="match in matches" v-bind:key="match.id">
+      <!-- populates ui with content fetched from api based on the name that matches -->
       <div class="employee__text">
         <h1 class="employee__name">{{ match.name }}</h1>
         <ul>
@@ -45,7 +51,11 @@
       </div>
 
       <div class="employee__image">
-        <img src="https://picsum.photos/600/415" class="employee__img" alt="placeholder__image" />
+        <img
+          src="https://picsum.photos/600/415"
+          class="employee__img"
+          alt="placeholder__image"
+        />
       </div>
     </div>
   </div>
@@ -115,7 +125,7 @@ export default {
 <style lang="scss" scoped>
 .employee {
   max-width: 1200px;
-  margin: 8rem auto 2rem;
+  margin: 6rem auto 2rem;
 
   h1 {
     margin-block-start: 0em;
@@ -130,7 +140,6 @@ export default {
   ul {
     padding-inline-start: 0em;
   }
-
 
   select {
     font: 400 12px/1.3;
@@ -160,7 +169,6 @@ export default {
     padding: 0rem 0rem 0.25rem;
   }
 
-
   &__img {
     border-radius: 25px;
     object-fit: cover;
@@ -169,7 +177,7 @@ export default {
   }
 
   &__image {
-        @media screen and (max-width: 1050px) {
+    @media screen and (max-width: 1050px) {
       order: 1;
       margin: 1rem 0rem;
     }
@@ -178,7 +186,7 @@ export default {
   &__info {
     display: flex;
     justify-content: space-between;
-    
+
     @media screen and (max-width: 1050px) {
       flex-wrap: wrap;
       margin: 0rem 1rem;
@@ -190,11 +198,11 @@ export default {
   }
 
   &__pink-theme {
-  --radius: 25px;
-  --baseFg: #4741b8;
-  --baseBg: #fff;
-  --accentFg: #4741b8;
-  --accentBg: #fff;
+    --radius: 25px;
+    --baseFg: #4741b8;
+    --baseBg: #fff;
+    --accentFg: #4741b8;
+    --accentBg: #fff;
   }
 
   &__select {
