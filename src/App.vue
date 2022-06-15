@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
+    <h2 class="app__header">EmployApp: simple Vue.js app to select an employee card.</h2>
     <SelectAvatar msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -15,13 +16,25 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+<style lang="scss">
+.app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+  h2 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+
+  &__header {
+    background-color: #41B883;
+    color: white;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+  }
 }
 </style>
