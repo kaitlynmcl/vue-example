@@ -50,12 +50,16 @@
         </ul>
       </div>
 
-      <div class="employee__image">
-        <img
-          src="https://picsum.photos/600/415"
-          class="employee__img"
-          alt="placeholder__image"
-        />
+      <div class="employee__image"> <!-- placeholder image, if img were available in api --> 
+        <figure v-lazyload>
+
+          <img
+            :data-url="imgUrl"
+            class="employee__img"
+            alt=""
+          />
+                    <ImageSpinner class="image__spinner" />
+        </figure>
       </div>
     </div>
   </div>
@@ -63,8 +67,23 @@
 
 <script>
 import axios from "axios";
+import ImageSpinner from './ImageSpinner.vue';
+import LazyLoadDirective from "../directives/LazyLoadDirective";
 
 export default {
+  directives: {
+    lazyload: LazyLoadDirective
+  },
+  name: "ImageItem",
+  components: {
+    ImageSpinner
+  },
+  props: {
+    source: {
+      type: String,
+      required: true
+    },
+  },
   data() {
     return {
       // data function that establishes initial reactive state of component instance
@@ -72,6 +91,7 @@ export default {
       options: [],
       selectedOption: null,
       errored: false,
+      imgUrl: '',
     };
   },
   mounted() {
@@ -92,6 +112,7 @@ export default {
             teamMember.name === input ? matches.push(teamMember) : "no";
           });
           this.matches = matches;
+          this.imgUrl = 'https://picsum.photos/600/415';
           console.log(this.matches, "im matches");
         })
         .catch(
@@ -126,6 +147,11 @@ export default {
 .employee {
   max-width: 1200px;
   margin: 6rem auto 2rem;
+
+  figure {
+    margin-inline-start: 0rem;
+    margin-inline-end: 0rem;
+  }
 
   h1 {
     margin-block-start: 0em;
@@ -174,12 +200,14 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    position: relative;
+    z-index: 3;
   }
 
   &__image {
     @media screen and (max-width: 1050px) {
       order: 1;
-      margin: 1rem 0rem;
+      margin: 0rem;
     }
   }
 

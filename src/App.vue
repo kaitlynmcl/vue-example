@@ -28,7 +28,7 @@ export default {
     margin-block-end: 0em;
   }
 
-    &__footer {
+  &__footer {
     margin: 3rem 0rem 0rem;
     background-color: #c23775;
     color: #fff;
